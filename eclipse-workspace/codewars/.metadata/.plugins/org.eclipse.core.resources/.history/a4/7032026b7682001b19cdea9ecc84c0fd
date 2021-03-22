@@ -1,0 +1,33 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+		Examples
+
+		pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
+		pigIt('Hello world !');     // elloHay orldway !*/
+		
+		String sentence= "Pig latin is cool";
+		
+		
+		String [] sentArray=sentence.split(" ");
+		
+		String finalString="";
+		
+		String noFirstLter="";
+		
+		String firstLter="";
+		for(int i=0;i<sentArray.length;i++) {
+			noFirstLter=sentArray[i].substring(1);
+			firstLter=String.valueOf(sentArray[i].charAt(0));
+			
+			finalString=noFirstLter.concat(firstLter).concat("ay");
+			
+		}
+		System.out.println(finalString);
+		
+
+	}
+
+}

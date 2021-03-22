@@ -1,0 +1,41 @@
+package simplepiglatin;
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+		Examples
+
+		pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
+		pigIt('Hello world !');     // elloHay orldway !*/
+		
+		String sentence= "Pig latin is cool";
+		
+		
+		String [] sentArray=sentence.split(" ");
+		
+		String modifiedString="";
+		
+		String noFirstLter="";
+		
+		String firstLter="";
+		
+		String finalString="";
+		for(int i=0;i<sentArray.length;i++) {
+			noFirstLter=sentArray[i].substring(1);
+			firstLter=String.valueOf(sentArray[i].charAt(0));
+			
+			modifiedString=noFirstLter.concat(firstLter).concat("ay");
+			finalString=modifiedString+" ".concat(finalString);
+			
+			
+		}
+		
+		System.out.println(finalString);
+		
+		
+
+	}
+
+}
