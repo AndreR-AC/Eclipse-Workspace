@@ -21,8 +21,9 @@ public class User {
 		this.lastName=lastName;
 		this.pinHash=this.hashUserPin(pin);
 		this.userId=bank.getNewUserId();
+		this.accountList= new ArrayList<Account>();
 		
-		
+		System.out.printf("New user %s,#s with ID %s created. \n",lastName,firstName,this.userId);
 	}
 	
 	public byte[] hashUserPin(String pin) {
