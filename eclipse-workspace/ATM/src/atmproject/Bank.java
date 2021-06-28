@@ -9,6 +9,17 @@ public class Bank {
 	private ArrayList<User> userList;
 	
 	private ArrayList<Account> accountList;
+	
+	
+	/**
+	 * Create a Bank object with empty lists of users and accounts
+	 * @param name the name of the bank
+	 */
+	public Bank(String name) {
+		this.name=name;
+		this.userList=new ArrayList<User>();
+		this.accountList= new ArrayList<Account>();
+	}
 		
 	
 	/**
@@ -72,6 +83,48 @@ public class Bank {
 		
 		
 		return accountId;
+	}
+	
+	
+	/**
+	 * Create a new User and add it the to bank
+	 * @param firstName first name of the user
+	 * @param lastName	last name of the user
+	 * @param pin	user pin
+	 * @return newUser
+	 */
+	public User addUser(String firstName,String lastName,String pin) {
+		//create new user and add it to our list
+		User newUser= new User(firstName,lastName,pin,this);
+		this.userList.add(newUser);
+		
+		//create saves account for the user
+		Account newAccount= new Account("Savings",newUser,this);
+		
+		newUser.addAccount(newAccount);
+		this.addAccount(newAccount);
+		
+		return newUser;
+		
+		
+	}
+	
+	/**
+	 * User logs in with his credentials
+	 * @param userId
+	 * @param pin
+	 * @return return the user who is logging in
+	 */
+	public User userLogin(String userId,String pin) {
+		for(User user: this.userList) {
+			if(userId.compareTo(user.getUserId())==0 && user.validatePin(pin)) {
+				return user;
+			}
+			
+		}
+		//if pin is invalid or ping doesn't exist
+		
+		return null;
 	}
 	
 	

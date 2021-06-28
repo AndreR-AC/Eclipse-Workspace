@@ -29,7 +29,7 @@ public class User {
 		this.userId=bank.getNewUserId();
 		this.accountList= new ArrayList<Account>();
 		
-		System.out.printf("New user %s,#s with ID %s created. \n",lastName,firstName,this.userId);
+		System.out.printf("New user %s, %s with ID %s created. \n",lastName,firstName,this.userId);
 	}
 	
 	
@@ -50,6 +50,23 @@ public class User {
 		}
 		return pinHash;
 		
+	}
+	
+	/**
+	 * Compares the inputed pin with the user's pin
+	 * @param inputed pin
+	 * @return true or false if the pin is valid
+	 */
+	public boolean validatePin(String pin) {
+		try {
+			MessageDigest md= MessageDigest.getInstance("MD5");
+			return MessageDigest.isEqual(md.digest(pin.getBytes()), this.pinHash);
+		
+		}catch(NoSuchAlgorithmException e){
+			System.err.print("Error, NoSuchAlgorithmException");
+			System.exit(1);
+		}
+		return false;
 	}
 	
 	

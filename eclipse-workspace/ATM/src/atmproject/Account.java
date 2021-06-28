@@ -24,8 +24,7 @@ public class Account {
 		this.accountId=theBank.getNewAccountID();
 		this.transactions= new ArrayList<Transaction>();
 		
-		holder.addAccount(this);
-		theBank.addAccount(this);
+		
 		
 	}
 	
