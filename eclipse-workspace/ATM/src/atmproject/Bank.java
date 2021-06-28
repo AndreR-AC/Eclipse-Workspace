@@ -1,6 +1,7 @@
 package atmproject;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Bank {
 	private String name;
@@ -8,11 +9,78 @@ public class Bank {
 	private ArrayList<User> userList;
 	
 	private ArrayList<Account> accountList;
+		
 	
-	
-	
+	/**
+	 * Generate a unique ID for a user
+	 * @return userId
+	 */
 	public String getNewUserId() {
-		return ;
+		String userId;
+		Random rand= new Random();
+		boolean nonUnique=false;
+		int range=6;
+		do {
+			//generate a random Id
+			userId="";
+			for(int i=0;i<range;i++) {
+				userId+=((Integer)rand.nextInt(10)).toString();
+			}
+			
+			//check if it's unique
+			for(User user: this.userList) {
+				if(userId.compareTo(user.getUserId())==0) {
+					System.out.println("This id is already taken!!");
+					nonUnique=true;
+					break;
+				}
+			}
+			
+		}while(nonUnique);
+		
+		
+		return userId;
+	}
+	
+	
+	/**
+	 * Generates a unique ID for a Account
+	 * @return accountId
+	 */
+	public String getNewAccountID() {
+		String accountId;
+		Random rand= new Random();
+		boolean nonUnique=false;
+		int range=6;
+		do {
+			//generate a random Id
+			accountId="";
+			for(int i=0;i<range;i++) {
+				accountId+=((Integer)rand.nextInt(10)).toString();
+			}
+			
+			//check if it's unique
+			for(Account acct: this.accountList) {
+				if(accountId.compareTo(acct.getAccountid())==0) {
+					System.out.println("This id is already taken!!");
+					nonUnique=true;
+					break;
+				}
+			}
+			
+		}while(nonUnique);
+		
+		
+		return accountId;
+	}
+	
+	
+	/**
+	 * Add an account to the account list
+	 * @param anAccount account to add
+	 */
+	public void addAccount(Account anAccount) {
+		this.accountList.add(anAccount);
 	}
 
 	/**

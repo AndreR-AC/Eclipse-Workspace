@@ -3,28 +3,49 @@ package atmproject;
 import java.util.ArrayList;
 
 public class Account {
-	private User username;
+	private User holder;
 	
 	private String name;
 	
-	private String accountid;
+	private String accountId;
 	
-	private double balance;
+	private ArrayList<Transaction> transactions;
 	
-	private ArrayList<Transaction> transaction;
+	
+	/**
+	 * Creating a new account and initializing it's properties
+	 * @param name name of the account(saving/checking) for example
+	 * @param holder holder of the account
+	 * @param theBank the bank where the account is from
+	 */
+	public Account(String name, User holder, Bank theBank) {
+		this.name=name;
+		this.holder=holder;
+		this.accountId=theBank.getNewAccountID();
+		this.transactions= new ArrayList<Transaction>();
+		
+		holder.addAccount(this);
+		theBank.addAccount(this);
+		
+	}
+	
+	
+	
+	
+	
 
 	/**
-	 * @return the username
+	 * @return the holder
 	 */
 	public User getUsername() {
-		return username;
+		return holder;
 	}
 
 	/**
-	 * @param username the username to set
+	 * @param username the holder to set
 	 */
 	public void setUsername(User username) {
-		this.username = username;
+		this.holder = username;
 	}
 
 	/**
@@ -42,45 +63,33 @@ public class Account {
 	}
 
 	/**
-	 * @return the accountid
+	 * @return the accountId
 	 */
 	public String getAccountid() {
-		return accountid;
+		return accountId;
 	}
 
 	/**
-	 * @param accountid the accountid to set
+	 * @param accountid the accountId to set
 	 */
 	public void setAccountid(String accountid) {
-		this.accountid = accountid;
+		this.accountId = accountid;
 	}
 
-	/**
-	 * @return the balance
-	 */
-	public double getBalance() {
-		return balance;
-	}
 
-	/**
-	 * @param balance the balance to set
-	 */
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
 
 	/**
 	 * @return the transaction
 	 */
 	public ArrayList<Transaction> getTransaction() {
-		return transaction;
+		return transactions;
 	}
 
 	/**
 	 * @param transaction the transaction to set
 	 */
 	public void setTransaction(ArrayList<Transaction> transaction) {
-		this.transaction = transaction;
+		this.transactions = transaction;
 	}
 	
 	

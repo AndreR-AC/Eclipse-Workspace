@@ -15,7 +15,13 @@ public class User {
 	
 	private ArrayList<Account> accountList;
 	
-	
+	/**
+	 * Create a new User initializing its properties
+	 * @param firstName
+	 * @param lastName
+	 * @param pin
+	 * @param bank
+	 */
 	public User(String firstName, String lastName, String pin, Bank bank) {
 		this.firstName=firstName;
 		this.lastName=lastName;
@@ -26,6 +32,12 @@ public class User {
 		System.out.printf("New user %s,#s with ID %s created. \n",lastName,firstName,this.userId);
 	}
 	
+	
+	/**
+	 * Generates hashcode to hide atm pin
+	 * @param pin pint to be hashed
+	 * @return the hashed ping
+	 */
 	public byte[] hashUserPin(String pin) {
 		byte[] pinHash=null;
 		MessageDigest md=null;
@@ -38,6 +50,15 @@ public class User {
 		}
 		return pinHash;
 		
+	}
+	
+	
+	/**
+	 * Add account to account list
+	 * @param anAccount account to be added
+	 */
+	public void addAccount(Account anAccount) {
+		this.accountList.add(anAccount);
 	}
 	
 	

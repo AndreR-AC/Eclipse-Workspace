@@ -11,6 +11,30 @@ public class Transaction {
 	private String memo;
 	
 	private Account inAccount;
+	
+	/**
+	 * Create a transaction with no memo
+	 * @param amount
+	 * @param inAccount
+	 */
+	public Transaction(double amount, Account inAccount) {
+		this.amount=amount;
+		this.inAccount=inAccount;
+		this.timeStamp= new Date();
+		this.memo="";
+	}
+	
+	/**
+	 * Create a transaction with a memo
+	 * @param amount
+	 * @param memo
+	 * @param inAccount
+	 */
+	public Transaction(double amount,String memo, Account inAccount) {
+		//using first constructor to avoid boiler plate
+		this(amount,inAccount);
+		this.memo=memo;
+	}
 
 	/**
 	 * @return the amount
