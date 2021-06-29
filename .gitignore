@@ -6,6 +6,18 @@
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
+#eclipse metadata
+.mylyn/.taskListIndex/
+*.log
+.plugins/org.eclipse.m2e.core/nexus/
+*.swp
+.mylyn/*
+.plugins/org.eclipse.core.resources/.root/*.tree
+.markers
+.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.prefs
+.plugins/org.eclipse.ui.workbench/workingsets.xml
+.plugins/org.eclipse.team.cvs.core
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
@@ -41,6 +53,7 @@
 # .idea/modules
 # *.iml
 # *.ipr
+
 
 # CMake
 cmake-build-*/
