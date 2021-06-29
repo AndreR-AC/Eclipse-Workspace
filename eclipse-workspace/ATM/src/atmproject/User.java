@@ -32,6 +32,52 @@ public class User {
 		System.out.printf("New user %s, %s with ID %s created. \n",lastName,firstName,this.userId);
 	}
 	
+	/**
+	 * Print accounts info
+	 */
+	public void printAccountsSummary() {
+		System.out.printf("\n\n%s's accounts summary\n", this.firstName);
+		
+		for(int i=0;i<this.accountList.size();i++) {
+			System.out.printf("%d) %s \n", i+1,this.accountList.get(i).getSummaryLine());
+		}
+		System.out.println();
+	}
+	
+	public int numAccounts() {
+		return this.accountList.size();
+	}
+	
+	/**
+	 * 
+	 * @param acctIdx
+	 * @param amount
+	 * @param memo
+	 */
+	public void addAcctTransaction(int acctIdx, double amount, String memo) {
+		this.accountList.get(acctIdx).addTransaction(amount,memo);
+	}
+	
+	public double getAccountBalance(int acctIdx) {
+		return this.accountList.get(acctIdx).getBalance();
+	}
+	
+	/*
+	 * Get a specific account id from the account list
+	 */
+	public String getAccountId(int acctIdx) {
+		return this.accountList.get(acctIdx).getAccountid();
+	}
+	
+	
+	/**
+	 * Print Transfer history of specific account
+	 * @param acctIdx
+	 */
+	public void printAccountTransHistory(int acctIdx) {
+		this.accountList.get(acctIdx).printTransHistory();
+	}
+	
 	
 	/**
 	 * Generates hashcode to hide atm pin

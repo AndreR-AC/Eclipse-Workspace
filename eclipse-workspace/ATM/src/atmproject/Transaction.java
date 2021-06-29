@@ -35,12 +35,27 @@ public class Transaction {
 		this(amount,inAccount);
 		this.memo=memo;
 	}
+	
+	
+	/**
+	 * Get a string summarizing a transaction
+	 * @return
+	 */
+	public String getSummaryLine() {
+		if(this.amount>=0) {
+			return String.format("%s : $%.02f: %s ",
+					this.timeStamp.toString(), this.amount, this.memo);
+		}else {
+			return String.format("%s : $(%.02f): %s ",
+					this.timeStamp.toString(), -this.amount, this.memo);
+		}
+	}
 
 	/**
 	 * @return the amount
 	 */
 	public double getAmount() {
-		return amount;
+		return this.amount;
 	}
 
 	/**

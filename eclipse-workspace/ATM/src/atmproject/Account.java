@@ -29,6 +29,61 @@ public class Account {
 	}
 	
 	
+	/**
+	 * Returns this account's id, balance and name
+	 * @return
+	 */
+	public String getSummaryLine() {
+		//get the account's balance
+		double balance=this.getBalance();
+		
+		//format the summary line according to it's balance
+		if(balance>=0) {
+			return String.format("%s : $%.02f : %s", this.accountId,balance,this.name);
+		}else {
+			return String.format("%s : $(%.02f) : %s", this.accountId,balance,this.name);
+		}
+		
+		
+	}
+	
+	/**
+	 * Get balance of the account
+	 * @return
+	 */
+	public double getBalance() {
+		double balance=0;
+		
+		for(Transaction t: this.transactions) {
+			balance+=t.getAmount();
+			
+		}
+		return balance;
+	}
+	
+	/**
+	 * print transaction History
+	 */
+	public void printTransHistory() {
+		
+		System.out.printf("\nTransactions history for account %s\n ", this.accountId);
+		for(int t= this.transactions.size()-1; t >=0 ;t--) {
+			System.out.printf(this.transactions.get(t).getSummaryLine());
+		}
+		
+	}
+	
+	/**
+	 * Add a new transactions in this account
+	 * @param amount the amount transacted
+	 * @param memo the transaction memo
+	 */
+	public void addTransaction(double amount,String memo) {
+		Transaction trans=new Transaction(amount,memo,this);
+		this.transactions.add(trans);
+	}
+	
+	
 	
 	
 	
